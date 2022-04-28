@@ -101,7 +101,9 @@ object FileDirectory {
           val columnIndex = cursor.getColumnIndexOrThrow(column)
           val fileName = cursor.getString(columnIndex)
           Log.i("FileDirectory", "File name: $fileName")
-          targetFile = File(context.cacheDir, fileName)
+        if(fileName != null) {
+            targetFile = File(context.cacheDir, fileName)
+          }
         }
       } finally {
         cursor?.close()
